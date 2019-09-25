@@ -1,5 +1,7 @@
 package SE.EC.Johan.NameGenerator.data;
 
+import SE.EC.Johan.NameGenerator.service.NumberGenerator;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,20 +51,20 @@ public class NameReader {
         }
         return efterNamn;
     }
-
+/*
     public String getBoyName(){
-        String temp = pojkNamn().get(NumberGenerator.randomBoyNumber());
-        return temp;
+        String temp = pojkNamn().get(NumberGenerator.getRandomInt(pojkNamn().size()));
+        return temp.trim();
     }
 
     public String getGirlName(){
-        String temp = flickNamn().get(NumberGenerator.randomGirlNumber());
-        return temp;
+        String temp = flickNamn().get(NumberGenerator.getRandomInt(flickNamn().size()));
+        return temp.trim();
     }
 
     public String getLastName(){
-        String temp = efterNamn().get(NumberGenerator.randomLastNameNumber());
-        return temp;
+        String temp = efterNamn().get(NumberGenerator.getRandomInt(efterNamn().size()));
+        return temp.trim();
     }
 
     public List<String> getMultipleBoyNames(int size){
@@ -88,16 +90,16 @@ public class NameReader {
     }
 
     public String getBoyFullName(){
-        String temp1 = pojkNamn().get(NumberGenerator.randomBoyNumber()).trim();
-        String temp2 = efterNamn().get(NumberGenerator.randomLastNameNumber()).trim();
+        String temp1 = pojkNamn().get(NumberGenerator.getRandomInt(pojkNamn().size())).trim();
+        String temp2 = efterNamn().get(NumberGenerator.getRandomInt(efterNamn().size())).trim();
         return temp1 + " " + temp2;
     }
 
     public String getGirlFullName(){
         StringBuilder sb = new StringBuilder();
-        sb.append(flickNamn().get(NumberGenerator.randomGirlNumber()).trim());
+        sb.append(flickNamn().get(NumberGenerator.getRandomInt(flickNamn().size())).trim());
         sb.append(" ");
-        sb.append(efterNamn().get(NumberGenerator.randomLastNameNumber()).trim());
+        sb.append(efterNamn().get(NumberGenerator.getRandomInt(efterNamn().size())).trim());
 
         return sb.toString();
     }
@@ -125,4 +127,6 @@ public class NameReader {
 
 
     }
+
+ */
 }

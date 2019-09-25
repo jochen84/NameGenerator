@@ -1,7 +1,5 @@
 package SE.EC.Johan.NameGenerator;
 
-import SE.EC.Johan.NameGenerator.data.NumberGenerator;
-
 /**
  * Hello world!
  *
