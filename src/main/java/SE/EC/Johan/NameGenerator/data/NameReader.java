@@ -5,9 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class NameReader {
-    public List<String> pojkNamn() {
+
+    public static List<String> pojkNamn() {
 
         List<String> pojkNamn = new ArrayList<>();
         try(BufferedReader reader = new BufferedReader(new FileReader("Pojknamn.txt"))) {
@@ -21,7 +23,7 @@ public class NameReader {
         return pojkNamn;
     }
 
-    public List<String> flickNamn() {
+    public static List<String> flickNamn() {
 
         List<String> flickNamn = new ArrayList<>();
         try(BufferedReader reader = new BufferedReader(new FileReader("Flicknamn.txt"))) {
@@ -35,8 +37,7 @@ public class NameReader {
         return flickNamn;
     }
 
-    public List<String> efterNamn() {
-
+    public static List<String> efterNamn() {
         List<String> efterNamn = new ArrayList<>();
         try(BufferedReader reader = new BufferedReader(new FileReader("Efternamn.txt"))) {
             String line;
@@ -47,5 +48,81 @@ public class NameReader {
             e.printStackTrace();
         }
         return efterNamn;
+    }
+
+    public String getBoyName(){
+        String temp = pojkNamn().get(NumberGenerator.randomBoyNumber());
+        return temp;
+    }
+
+    public String getGirlName(){
+        String temp = flickNamn().get(NumberGenerator.randomGirlNumber());
+        return temp;
+    }
+
+    public String getLastName(){
+        String temp = efterNamn().get(NumberGenerator.randomLastNameNumber());
+        return temp;
+    }
+
+    public List<String> getMultipleBoyNames(int size){
+        List<String> temp = new ArrayList<>();
+        for(int i = 1; i <= size; i++){
+            temp.add(getBoyName());
+        }
+        return temp;
+    }
+    public List<String> getMultipleGirlNames(int size){
+        List<String> temp = new ArrayList<>();
+        for(int i = 1; i <= size; i++){
+            temp.add(getGirlName());
+        }
+        return temp;
+    }
+    public List<String> getMultipleLastNames(int size){
+        List<String> temp = new ArrayList<>();
+        for(int i = 1; i <= size; i++){
+            temp.add(getLastName());
+        }
+        return temp;
+    }
+
+    public String getBoyFullName(){
+        String temp1 = pojkNamn().get(NumberGenerator.randomBoyNumber()).trim();
+        String temp2 = efterNamn().get(NumberGenerator.randomLastNameNumber()).trim();
+        return temp1 + " " + temp2;
+    }
+
+    public String getGirlFullName(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(flickNamn().get(NumberGenerator.randomGirlNumber()).trim());
+        sb.append(" ");
+        sb.append(efterNamn().get(NumberGenerator.randomLastNameNumber()).trim());
+
+        return sb.toString();
+    }
+
+    public String getRandomFullName(){
+        String name = "";
+        int randomNumber = ThreadLocalRandom.current().nextInt(0,1);
+        switch (randomNumber){
+            case 0:
+                name = getBoyFullName();
+                break;
+            case 1:
+                name = getGirlFullName();
+                break;
+        }
+        return name;
+    }
+
+    public List<String> getBoyFamily(int size, String lastName){
+        List<String> temp = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            temp.add(getBoyName() + " " + lastName);
+        }
+        return temp;
+
+
     }
 }
