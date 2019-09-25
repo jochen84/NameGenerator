@@ -119,8 +119,27 @@ public class NameServiceTest{
     }
 
     @Test
-    public void test_family_names(){
+    public void test_boy_family_names(){
 
-        System.out.println(testObject.getBoyFamily(5, "Hansson"));
+        int expectedNames = 5;
+        int actualNames = testObject.getBoyFamily(5, "Sundberg").size();
+
+        Assert.assertEquals(expectedNames,actualNames);
+    }
+    @Test
+    public void test_girl_family_names(){
+
+        int expectedNames = 5;
+        int actualNames = testObject.getGirlFamily(5, "Sundberg").size();
+        System.out.println(testObject.getGirlFamily(10, "Ahmadi"));
+        Assert.assertEquals(expectedNames,actualNames);
+    }
+
+    @Test
+    public void test_boynames_with_first_letter(){
+
+        //List<String> test = testObject.getBoyNameWithFirstLetter('Z');
+        //System.out.println(test);
+        System.out.println(testObject.getBoyNameWithFirstLetter('Z'));
     }
 }

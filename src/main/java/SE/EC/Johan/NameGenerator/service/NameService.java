@@ -109,7 +109,24 @@ public class NameService {
             temp.add(getBoyName() + " " + lastName);
         }
         return temp;
+    }
 
+    public List<String> getGirlFamily(int size, String lastName){
+        List<String> temp = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            temp.add(getGirlName() + " " + lastName);
+        }
+        return temp;
+    }
 
+    public List<String> getBoyNameWithFirstLetter(char c){
+        List<String> temp = new ArrayList<>();
+        char x = Character.toLowerCase(c);
+        for(String test : getBoyNames()){
+            if(test.toLowerCase().charAt(0) == x){
+                temp.add(test);
+            }
+        }
+        return temp;
     }
 }
